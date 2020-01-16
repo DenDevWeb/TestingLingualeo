@@ -15,6 +15,11 @@ namespace TestingLingualeo.Pages
         private readonly string _url =
             @"https://lingualeo.com/ru/";
         
+        [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div/div[4]/div/div[2]/div[1]/div[3]/a[1]")] 
+        private IWebElement _our_blog_link;
+        
+        private static readonly string OUR_BLOG = "/html/body/div[1]/div[3]/div[1]/div[2]/div/div[1]/a[1]";
+        
         public HomePage(IWebDriver driver)
         {
             _driver = driver;
@@ -36,6 +41,20 @@ namespace TestingLingualeo.Pages
         public TrainingPage ToTraining()
         {
             return new TrainingPage(_driver);
+        }
+        
+        public string GoToOurBlog()
+        {
+            _our_blog_link.Click();
+            string tmp3 = _driver.Title;
+            if (ElementHelper.HasElement(_driver, By.XPath(OUR_BLOG), TimeSpan.FromSeconds(5.0)))
+            {
+                string tmp2 = _driver.Title;
+                return _driver.Title;
+            }
+
+            string tmp = _driver.Title;
+            return "";
         }
         
         public string GetPageName()

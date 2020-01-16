@@ -113,5 +113,15 @@ namespace TestingLingualeo
                 Assert.AreEqual("The translation is incorrect",e.Message);
             }
         }
+        [Test]
+        public void SuccessTransitionToTheAppStore()
+        {
+            LoginPage loginPage = new LoginPage(_driver);
+         
+            User userLogin = User.GetValidUserForLogin();
+            string result = loginPage.Navigate().FillUser(userLogin).Submit().GoToOurBlog();
+            
+            Assert.AreEqual(result, "Английский язык онлайн - Lingualeo Блог");
+        }
     }
 }
