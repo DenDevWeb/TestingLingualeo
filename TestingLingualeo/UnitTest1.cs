@@ -83,5 +83,17 @@ namespace TestingLingualeo
             }
                      
         }
+        
+        [Test]
+        public void SuccessUserProfile()
+        {
+            LoginPage loginPage = new LoginPage(_driver);
+         
+            //user.Email = "test@test.ru";
+            User userLogin = User.GetValidUserForLogin();
+            UserProfile userProfile = UserProfile.GetValidUserForProfile();
+            ProfilePage result = loginPage.Navigate().FillUser(userLogin).Submit().ToProfile().Navigate().GoToEditProfile().FillUser(userProfile).GoToSaveProfile().GoToEditProfile().Submit(userProfile);
+            Assert.NotNull(result);
+        }
     }
 }
