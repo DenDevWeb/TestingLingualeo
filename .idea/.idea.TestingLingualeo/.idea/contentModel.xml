@@ -18,10 +18,14 @@
         </e>
         <e p="Helpers" t="Include">
           <e p="ElementHelper.cs" t="Include" />
+          <e p="TextHelpers.cs" t="Include" />
+        </e>
+        <e p="Images" t="Include">
+          <e p="test_big_avatar.jpg" t="Include" />
         </e>
         <e p="Models" t="Include">
-          <e p="TextHelpers.cs" t="Include" />
           <e p="User.cs" t="Include" />
+          <e p="UserProfile.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -34,6 +38,7 @@
           <e p="HomePage.cs" t="Include" />
           <e p="IPage.cs" t="Include" />
           <e p="LoginPage.cs" t="Include" />
+          <e p="ProfilePage.cs" t="Include" />
         </e>
         <e p="TestingLingualeo.csproj" t="IncludeRecursive" />
         <e p="UnitTest1.cs" t="Include" />

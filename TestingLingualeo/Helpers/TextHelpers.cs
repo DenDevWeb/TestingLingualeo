@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestingLingualeo.Models
+namespace TestingLingualeo.Helpers
 {
     public class TextHelpers
     {

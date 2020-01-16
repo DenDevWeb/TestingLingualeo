@@ -64,5 +64,24 @@ namespace TestingLingualeo
                      
             Assert.True(homePage.AreEqual());
         }
+        
+        [Test]
+        public void FailedAvatar()
+        {
+            LoginPage loginPage = new LoginPage(_driver);
+         
+            //user.Email = "test@test.ru";
+            User user = User.GetValidUserForLogin();
+            UserProfile userProfile = UserProfile.GetValidUserForProfile();
+            try
+            {
+                loginPage.Navigate().FillUser(user).Submit().ToProfile().Navigate().GoToEditProfile().LoadAvatar(userProfile);
+            }
+            catch (TextException e)
+            {
+                Assert.AreEqual("The file is too large",e.Message);
+            }
+                     
+        }
     }
 }
