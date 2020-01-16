@@ -23,8 +23,8 @@ namespace TestingLingualeo
             _driver = new ChromeDriver("D:\\TestingLingualeo\\TestingLingualeo\\bin\\Debug\\netcoreapp3.0\\");
         }
 
-        [Test]
-        public void Test1()
+        [OneTimeTearDown]
+        public void OneTimeTearDown()
         {
             _driver.Quit();
         }
@@ -52,6 +52,17 @@ namespace TestingLingualeo
                 Assert.AreEqual("Password or email is empty",e.Message);
             }
 
+        }
+        
+        [Test]
+        public void SuccessLogin()
+        {
+            LoginPage loginPage = new LoginPage(_driver);
+
+            User user = User.GetValidUserForLogin();
+            HomePage homePage = loginPage.Navigate().FillUser(user).Submit();
+                     
+            Assert.True(homePage.AreEqual());
         }
     }
 }
