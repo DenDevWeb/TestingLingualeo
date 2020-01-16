@@ -33,6 +33,11 @@ namespace TestingLingualeo.Pages
             return new ProfilePage(_driver);
         }
         
+        public TrainingPage ToTraining()
+        {
+            return new TrainingPage(_driver);
+        }
+        
         public string GetPageName()
         {
             return "Dashboard";

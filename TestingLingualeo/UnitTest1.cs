@@ -95,5 +95,23 @@ namespace TestingLingualeo
             ProfilePage result = loginPage.Navigate().FillUser(userLogin).Submit().ToProfile().Navigate().GoToEditProfile().FillUser(userProfile).GoToSaveProfile().GoToEditProfile().Submit(userProfile);
             Assert.NotNull(result);
         }
+        
+        [Test]
+        public void FailedTranslationInTrainingWordToTranslation()
+        {
+            LoginPage loginPage = new LoginPage(_driver);
+         
+            //user.Email = "test@test.ru";
+            User userLogin = User.GetValidUserForLogin();
+            
+            try
+            {
+                loginPage.Navigate().FillUser(userLogin).Submit().ToTraining().Navigate().GoToWord_Translation().Submit();
+            }
+            catch (TextException e)
+            {
+                Assert.AreEqual("The translation is incorrect",e.Message);
+            }
+        }
     }
 }
